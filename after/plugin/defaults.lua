@@ -7,10 +7,12 @@ vim.opt.relativenumber = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
--- trick to remap telescope because lazyvim is running this file before the
--- definition at init.lua
-local find_files = require('telescope.builtin').find_files
+-- prevent newline eof
+vim.opt.fixeol = false
+vim.opt.fixendofline = false
 
-require('telescope.builtin').find_files = function()
-  find_files({ previewer = false, find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } })
-end
+vim.keymap.set('v', '<leader>1', '"ay', {})
+vim.keymap.set('n', '<leader>1', '"ap', {})
+
+vim.keymap.set('v', '<leader>2', '"xy', {})
+vim.keymap.set('n', '<leader>2', '"xp', {})
